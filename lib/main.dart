@@ -22,13 +22,16 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.red,
         appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
-              fontFamily: "Quicksand",
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold),
+            fontFamily: "Quicksand",
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         fontFamily: "Quicksand",
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.pink)
-            .copyWith(secondary: Colors.pink),
+        colorScheme:
+            ColorScheme.fromSwatch(primarySwatch: Colors.pink).copyWith(
+          secondary: Colors.pink,
+        ),
       ),
       debugShowCheckedModeBanner: false,
       home: const HomePage(),
@@ -136,14 +139,14 @@ class _HomePageState extends State<HomePage> {
                 height: (MediaQuery.of(context).size.height -
                         appbar.preferredSize.height -
                         MediaQuery.of(context).padding.top) *
-                    0.4,
+                    0.3,
                 child: Chart(_recentTransactionlist),
               ),
               Container(
                 height: (MediaQuery.of(context).size.height -
                         appbar.preferredSize.height -
                         MediaQuery.of(context).padding.top) *
-                    0.6,
+                    0.7,
                 child:
                     TransactionList(_userTransactions, _deleteTransactionlist),
               ),

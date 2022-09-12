@@ -4,10 +4,10 @@ class ChartBar extends StatelessWidget {
   final String label;
   final double speindingamount;
   final double spendingPcTotal;
-  ChartBar(
+  const ChartBar(
     this.label,
     this.speindingamount,
-    this.spendingPcTotal,
+    this.spendingPcTotal, {super.key}
   );
 
   @override

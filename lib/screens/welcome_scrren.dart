@@ -14,10 +14,11 @@ class WelcomeScreen extends StatelessWidget {
             children: [
               FittedBox(
                 child: Image(
-                  image: const AssetImage("assets/images/welcome4.jpg"),
+                  image: const AssetImage("assets/images/welcome_gif.gif"),
                   width: MediaQuery.of(context).size.width,
+                  
                   height: MediaQuery.of(context).size.height * 0.96,
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
               ),
               Container(

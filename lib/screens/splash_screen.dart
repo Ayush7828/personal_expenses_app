@@ -1,5 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
-import 'package:persnalexpenses_app/main.dart';
+
 import 'package:persnalexpenses_app/screens/welcome_scrren.dart';
 
 class SplashScrren extends StatefulWidget {
@@ -18,15 +20,16 @@ class _SplashScrrenState extends State<SplashScrren> {
 
   _navigator() async {
     await Future.delayed(const Duration(seconds: 5), () {});
-    // ignore: use_build_context_synchronously
+   
     Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context) => const WelcomeScreen()));
+        MaterialPageRoute(builder: (context) => const WelcomeScreen(),),);
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

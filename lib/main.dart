@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:persnalexpenses_app/screens/signup_screen.dart';
-import 'package:persnalexpenses_app/screens/splash_screen.dart';
 
 import 'package:persnalexpenses_app/screens/welcome_scrren.dart';
 import 'package:persnalexpenses_app/utils/routes.dart';
@@ -32,8 +31,7 @@ class MyApp extends StatelessWidget {
             .copyWith(secondary: Colors.pink),
       ),
       debugShowCheckedModeBanner: false,
-      home: const SplashScrren(),
-      initialRoute: 'login',
+      home: const HomePage(),
       routes: {
         MyRoutes.login: (context) => const LoginPage(),
         MyRoutes.home: (context) => const HomePage(),
@@ -104,12 +102,6 @@ class _HomePageState extends State<HomePage> {
             child: NewTransaction(_addNewTransaction),
           );
         });
-    // showModelBottomSheet(
-    //   context: ctx,
-    //   builder: (_) {
-    //     return NewTransaction(_addNewTransaction);
-    //   },
-    // );
   }
 
   void _deleteTransactionlist(String id) {
@@ -120,27 +112,41 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final appbar = AppBar(
+      title: const Text(
+        "Expenses App",
+        style: TextStyle(fontFamily: "Poppins"),
+      ),
+      actions: [
+        IconButton(
+          onPressed: () => _startAddNewTransaction(context),
+          icon: const Icon(Icons.add),
+        ),
+      ],
+      centerTitle: true,
+    );
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            "Expenses App",
-            style: TextStyle(fontFamily: "Poppins"),
-          ),
-          actions: [
-            IconButton(
-              onPressed: () => _startAddNewTransaction(context),
-              icon: const Icon(Icons.add),
-            ),
-          ],
-          centerTitle: true,
-        ),
+        appBar: appbar,
         body: SingleChildScrollView(
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Chart(_recentTransactionlist),
-              TransactionList(_userTransactions, _deleteTransactionlist)
+              Container(
+                height: (MediaQuery.of(context).size.height -
+                        appbar.preferredSize.height -
+                        MediaQuery.of(context).padding.top) *
+                    0.4,
+                child: Chart(_recentTransactionlist),
+              ),
+              Container(
+                height: (MediaQuery.of(context).size.height -
+                        appbar.preferredSize.height -
+                        MediaQuery.of(context).padding.top) *
+                    0.6,
+                child:
+                    TransactionList(_userTransactions, _deleteTransactionlist),
+              ),
             ],
           ),
         ),
